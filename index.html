@@ -16,16 +16,14 @@
   --gb:#D3D1C7;--gbg:#F1EFE8;--w:#fff;
   --r:8px;--f:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
-body{font-family:var(--f);background:var(--w);color:var(--gt);margin:0;padding:0}
-.shell{max-width:700px;margin:0 auto;padding:2rem 1.25rem 3rem}
+body{font-family:var(--f);background:var(--gbg);color:var(--gt);margin:0;padding:0}
+.shell{max-width:720px;margin:0 auto;padding:2rem 1.25rem 3rem}
 .header{display:flex;align-items:center;gap:14px;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1px solid var(--gb)}
-.hico{width:44px;height:44px;background:var(--teal-l);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hico svg{width:24px;height:24px}
+.hico{width:48px;height:48px;background:var(--teal-l);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hico svg{width:26px;height:26px}
 .htitle{font-size:19px;font-weight:600;color:var(--gt)}
 .hsub{font-size:13px;color:var(--gm);margin-top:3px}
-.pwrap{margin-bottom:1.5rem}
-.pmeta{display:flex;justify-content:space-between;font-size:12px;color:var(--gmu);margin-bottom:6px}
-.pbar{height:4px;background:var(--gb);border-radius:99px;overflow:hidden}
+.pbar{height:4px;background:var(--gb);border-radius:99px;margin-bottom:1.5rem;overflow:hidden}
 .pfill{height:100%;background:var(--teal);border-radius:99px;transition:width .35s ease}
 .bc{display:none;flex-wrap:wrap;gap:4px;align-items:center;margin-bottom:1.25rem;font-size:12px;color:var(--gmu)}
 .bc.on{display:flex}
@@ -35,11 +33,29 @@ body{font-family:var(--f);background:var(--w);color:var(--gt);margin:0;padding:0
 .ey{font-size:11px;font-weight:600;color:var(--teal);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
 .qt{font-size:17px;font-weight:500;line-height:1.5;color:var(--gt);margin-bottom:1.25rem}
 .choices{display:flex;flex-direction:column;gap:8px}
-.cb{display:flex;align-items:center;gap:12px;background:var(--w);border:1px solid var(--gb);border-radius:var(--r);padding:13px 16px;font-size:14px;color:var(--gt);cursor:pointer;text-align:left;transition:border-color .15s,background .15s,color .15s;line-height:1.4}
+
+/* Catégories */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:1rem}
+.cat{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--w);border:1px solid var(--gb);border-radius:12px;padding:1.25rem 1rem;cursor:pointer;text-align:center;transition:border-color .15s,background .15s,transform .1s}
+.cat:hover{border-color:var(--teal);background:var(--teal-l);transform:translateY(-2px)}
+.cat:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.cat-ico{width:44px;height:44px;border-radius:10px;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:22px;transition:background .15s}
+.cat:hover .cat-ico{background:var(--teal);color:#fff}
+.cat-ico svg{width:22px;height:22px;stroke:var(--gm);transition:stroke .15s}
+.cat:hover .cat-ico svg{stroke:#fff}
+.cat-label{font-size:14px;font-weight:500;color:var(--gt)}
+.cat-sub{font-size:12px;color:var(--gmu);line-height:1.4}
+
+/* Boutons choix */
+.cb{display:flex;align-items:center;gap:12px;background:var(--w);border:1px solid var(--gb);border-radius:var(--r);padding:13px 16px;font-size:14px;color:var(--gt);cursor:pointer;text-align:left;transition:border-color .15s,background .15s,color .15s;line-height:1.4;width:100%}
 .cb:hover{border-color:var(--teal);background:var(--teal-l);color:var(--teal-d)}
 .cb:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.ci{width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--gbg);font-size:18px;color:var(--gm);transition:background .15s,color .15s}
-.cb:hover .ci{background:var(--teal);color:var(--w)}
+.ci{width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--gbg);transition:background .15s}
+.ci svg{width:17px;height:17px;stroke:var(--gm);transition:stroke .15s}
+.cb:hover .ci{background:var(--teal)}
+.cb:hover .ci svg{stroke:#fff}
+
+/* Résolutions */
 .res{border-radius:12px;padding:1.25rem 1.5rem;border:1px solid}
 .res-ok{background:var(--green-l);border-color:var(--green-b)}
 .res-w{background:var(--amber-l);border-color:#FAC775}
@@ -53,19 +69,30 @@ body{font-family:var(--f);background:var(--w);color:var(--gt);margin:0;padding:0
 .rt svg{width:18px;height:18px;flex-shrink:0}
 .rb{font-size:13px;line-height:1.7;color:var(--gm);margin-bottom:12px}
 .rb strong{color:var(--gt);font-weight:500}
-.rs{font-size:13px;line-height:1.8;color:var(--gm);padding-left:1.3rem;margin:0}
+.rs{font-size:13px;line-height:1.9;color:var(--gm);padding-left:1.3rem;margin:0}
 .rs li{margin-bottom:5px}
 .rs strong{color:var(--gt);font-weight:500}
+.rs code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;font-size:12px}
+
+/* Actions */
 .acts{display:flex;gap:8px;margin-top:1.25rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:6px;border-radius:var(--r);padding:8px 15px;font-size:13px;cursor:pointer;border:1px solid var(--gb);background:var(--w);color:var(--gm);transition:background .15s;text-decoration:none}
 .btn:hover{background:var(--gbg)}
+.btn svg{width:14px;height:14px;flex-shrink:0}
 .btn-p{border-color:var(--teal);color:var(--teal-d)}
 .btn-p:hover{background:var(--teal-l)}
-.btn svg{width:14px;height:14px;flex-shrink:0}
+.btn-back{border-color:var(--gb);color:var(--gmu)}
+
 .foot{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--gb);font-size:13px;color:var(--gmu);text-align:center}
 .foot a{color:var(--teal-d);text-decoration:none;font-weight:500}
 .foot a:hover{text-decoration:underline}
-@media(max-width:480px){.shell{padding:1.25rem 1rem 2rem}.qt{font-size:16px}.cb{font-size:13px;padding:11px 13px}}
+
+@media(max-width:480px){
+  .shell{padding:1.25rem 1rem 2rem}
+  .qt{font-size:16px}
+  .cb{font-size:13px;padding:11px 13px}
+  .cats{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -81,244 +108,350 @@ body{font-family:var(--f);background:var(--w);color:var(--gt);margin:0;padding:0
   </div>
 </div>
 
-<div class="pwrap">
-  <div class="pmeta"><span id="plbl">Début</span><span id="ppct">0 %</span></div>
-  <div class="pbar"><div class="pfill" id="pf" style="width:0%"></div></div>
-</div>
+<div class="pbar"><div class="pfill" id="pf" style="width:0%"></div></div>
 <div class="bc" id="bc"></div>
 
-<!-- ROOT -->
+<!-- ═══ ROOT — 4 catégories ═══ -->
 <div id="s0" class="step active">
-  <div class="ey">Étape 1 sur 3</div>
-  <div class="qt">Tu es sur la page d'accueil MMM+ Agora — quel est ton problème ?</div>
-  <div class="choices">
+  <div class="ey">De quoi as-tu besoin ?</div>
+  <div class="qt">Choisis la catégorie qui correspond à ton problème</div>
+  <div class="cats">
 
-    <button class="cb" onclick="go('s1a',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
-      Je clique sur une tuile et ça me force à me reconnecter ou ça boucle
+    <button class="cat" onclick="go('s_connexion',this)">
+      <div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <div class="cat-label">Connexion</div>
+      <div class="cat-sub">Invitation, compte Gmail, Hotmail, corporatif</div>
     </button>
 
-    <button class="cb" onclick="go('s1b',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></span>
-      Je ne vois pas certaines communautés Viva Engage
+    <button class="cat" onclick="go('s_communautes',this)">
+      <div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="cat-label">Communautés</div>
+      <div class="cat-sub">Accès, tuiles, Femmes de rivière</div>
     </button>
 
-    <button class="cb" onclick="go('s1c',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-      J'arrive avec le mauvais compte Microsoft
+    <button class="cat" onclick="go('s_mobile',this)">
+      <div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+      <div class="cat-label">Mobile</div>
+      <div class="cat-sub">App Viva Engage, navigateur mobile</div>
     </button>
 
-    <button class="cb" onclick="go('s1d',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 7-10 7L2 7"/><line x1="4" y1="20" x2="4.01" y2="20"/></svg></span>
-      Je n'ai jamais reçu mon invitation par courriel
-    </button>
-
-    <button class="cb" onclick="go('s1e',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/><line x1="18" y1="6" x2="23" y2="11"/><line x1="23" y1="6" x2="18" y2="11"/></svg></span>
-      J'ai reçu une invitation mais le lien ne fonctionne plus
-    </button>
-
-    <button class="cb" onclick="go('s1f',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
-      L'app mobile Engage me demande autre chose que mon courriel
+    <button class="cat" onclick="go('s_general',this)">
+      <div class="cat-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <div class="cat-label">Général</div>
+      <div class="cat-sub">Adhésion, événements, autres questions</div>
     </button>
 
   </div>
 </div>
 
-<!-- 1A -->
-<div id="s1a" class="step">
-  <div class="ey">Étape 2 sur 3</div>
-  <div class="qt">Après la re-demande de connexion, que se passe-t-il ?</div>
+<!-- ═══ CONNEXION ═══ -->
+<div id="s_connexion" class="step">
+  <div class="ey">Connexion</div>
+  <div class="qt">Quel est ton problème de connexion ?</div>
   <div class="choices">
-    <button class="cb" onclick="go('r1a_ok',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-      Ça fonctionne après mon code — juste agaçant
+    <button class="cb" onclick="go('r_inv_norecu',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 7-10 7L2 7"/></svg></span>
+      Je n'ai pas reçu l'invitation Microsoft
     </button>
-    <button class="cb" onclick="go('r1a_loop',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg></span>
-      Ça boucle indéfiniment, je n'arrive jamais à destination
+    <button class="cb" onclick="go('r_gmail',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+      J'ai un compte Gmail ou Videotron
     </button>
-    <button class="cb" onclick="go('r1a_wrong',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-      Je me retrouve dans l'espace de mon employeur (CUSM, etc.)
+    <button class="cb" onclick="go('r_hotmail',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></span>
+      J'ai un compte Hotmail ou Outlook
+    </button>
+    <button class="cb" onclick="go('s_gmail_ms',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      Mon Gmail est lié à un compte Microsoft personnel
+    </button>
+    <button class="cb" onclick="go('r_corporatif',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+      Mon courriel est lié à un compte corporatif (hôpital, université…)
+    </button>
+    <button class="cb" onclick="go('r_mauvais_compte',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg></span>
+      Je clique sur le lien Agora mais ça me redemande de me connecter
+    </button>
+    <button class="cb" onclick="go('r_erreur_rouge',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+      Message d'erreur en rouge — compte inexistant ou non supporté
+    </button>
+    <button class="cb" onclick="go('r_cache',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span>
+      Comment vider le cache de mon navigateur ?
     </button>
   </div>
 </div>
 
-<!-- 1B -->
-<div id="s1b" class="step">
-  <div class="ey">Étape 2 sur 3</div>
-  <div class="qt">Quelle communauté ne vois-tu pas ?</div>
+<!-- Gmail lié MS — sous-question -->
+<div id="s_gmail_ms" class="step">
+  <div class="ey">Connexion › Gmail lié à Microsoft</div>
+  <div class="qt">Quel problème rencontres-tu exactement ?</div>
   <div class="choices">
-    <button class="cb" onclick="go('r1b_fdv',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
-      Femmes de rivière
+    <button class="cb" onclick="go('r_gmail_ms_proc',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+      Je ne sais pas comment me connecter avec mon Gmail lié à Microsoft
     </button>
-    <button class="cb" onclick="go('r1b_none',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="1" y1="1" x2="23" y2="23"/></svg></span>
-      Je ne vois aucune communauté — Agora est vide
+    <button class="cb" onclick="go('r_gmail_ms_travail',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+      Mon navigateur ouvre automatiquement mon compte de travail
     </button>
-    <button class="cb" onclick="go('r1b_some',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+  </div>
+</div>
+
+<!-- ═══ COMMUNAUTÉS ═══ -->
+<div id="s_communautes" class="step">
+  <div class="ey">Communautés</div>
+  <div class="qt">Quel est ton problème avec les communautés ?</div>
+  <div class="choices">
+    <button class="cb" onclick="go('r_tuiles',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+      Je clique sur une tuile de communauté et ça ne fonctionne pas
+    </button>
+    <button class="cb" onclick="go('r_comm_vide',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></span>
+      Je n'ai accès à aucune communauté — Agora est vide
+    </button>
+    <button class="cb" onclick="go('r_comm_partiel',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
       Je vois certaines communautés mais pas toutes
     </button>
+    <button class="cb" onclick="go('r_fdv',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+      Je cherche la communauté Femmes de rivière
+    </button>
+    <button class="cb" onclick="go('r_nav_comm',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg></span>
+      Comment naviguer entre les communautés ?
+    </button>
   </div>
 </div>
 
-<!-- 1C -->
-<div id="s1c" class="step">
-  <div class="ey">Étape 2 sur 3</div>
-  <div class="qt">Quel type de conflit de compte as-tu ?</div>
+<!-- ═══ MOBILE ═══ -->
+<div id="s_mobile" class="step">
+  <div class="ey">Mobile</div>
+  <div class="qt">Quel est ton problème sur mobile ?</div>
   <div class="choices">
-    <button class="cb" onclick="go('r1c_pro',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-      Je bascule automatiquement dans l'espace de mon employeur
+    <button class="cb" onclick="go('r_app_wrong',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="11" y2="11"/></svg></span>
+      L'app me demande une URL au lieu de mon courriel
     </button>
-    <button class="cb" onclick="go('r1c_dual',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="0" y="0" width="11" height="11" rx="2"/><rect x="13" y="0" width="11" height="11" rx="2"/><rect x="0" y="13" width="11" height="11" rx="2"/></svg></span>
-      J'ai deux comptes MMM+ (compte instructeur + compte membre)
+    <button class="cb" onclick="go('r_app_error',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+      L'app affiche « Sorry, something went wrong »
+    </button>
+    <button class="cb" onclick="go('r_app_blank',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></span>
+      L'app est bloquée ou ne répond plus
+    </button>
+    <button class="cb" onclick="go('r_mobile_nav',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+      Comment accéder à Agora depuis mon téléphone sans l'app ?
     </button>
   </div>
 </div>
 
-<!-- 1D -->
-<div id="s1d" class="step">
-  <div class="ey">Étape 2 sur 3</div>
-  <div class="qt">As-tu cherché dans ces dossiers ?</div>
+<!-- ═══ GÉNÉRAL ═══ -->
+<div id="s_general" class="step">
+  <div class="ey">Général</div>
+  <div class="qt">Quelle est ta question ?</div>
   <div class="choices">
-    <button class="cb" onclick="go('r1d_spam',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg></span>
-      Oui — spam, indésirables, promotions — rien nulle part
+    <button class="cb" onclick="go('r_adhesion',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+      Mon accès à Agora est-il inclus dans mon adhésion MMM+ ?
     </button>
-    <button class="cb" onclick="go('r1d_videotron',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span>
-      Mon courriel est chez Videotron (ou autre fournisseur québécois)
+    <button class="cb" onclick="go('r_evenements',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+      Comment savoir quand il y a un événement en direct ?
     </button>
-    <button class="cb" onclick="go('r1d_yapla',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg></span>
-      Je ne sais pas si mon courriel est bien enregistré dans Yapla
+    <button class="cb" onclick="go('r_replay',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+      Puis-je revoir un événement que j'ai manqué ?
     </button>
-  </div>
-</div>
-
-<!-- 1E -->
-<div id="s1e" class="step">
-  <div class="ey">Étape 2 sur 3</div>
-  <div class="qt">Quel message d'erreur vois-tu en cliquant le lien ?</div>
-  <div class="choices">
-    <button class="cb" onclick="go('r1e_expired',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-      « Lien expiré » ou « invitation invalide »
+    <button class="cb" onclick="go('r_suggestion',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+      Puis-je suggérer une nouvelle communauté ?
     </button>
-    <button class="cb" onclick="go('r1e_account',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg></span>
-      « Compte introuvable » ou « pas de licence »
-    </button>
-    <button class="cb" onclick="go('r1e_consent',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
-      Une page me demande d'accepter des permissions
+    <button class="cb" onclick="go('r_autre',this)">
+      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+      Mon problème n'est pas dans la liste
     </button>
   </div>
 </div>
 
-<!-- 1F -->
-<div id="s1f" class="step">
-  <div class="ey">Étape 2 sur 3</div>
-  <div class="qt">Qu'est-ce qui apparaît dans le champ de connexion de l'app ?</div>
-  <div class="choices">
-    <button class="cb" onclick="go('r1f_url',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
-      Une URL (commence par https:// ou contient /sites/)
-    </button>
-    <button class="cb" onclick="go('r1f_domain',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-      Un nom de domaine ou d'organisation
-    </button>
-    <button class="cb" onclick="go('r1f_blank',this)">
-      <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></span>
-      Champ vide, l'app ne répond plus
-    </button>
+<!-- ═══════════════ RÉSOLUTIONS ═══════════════ -->
+
+<div id="r_inv_norecu" class="step">
+  <div class="res res-w">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 7-10 7L2 7"/></svg> Invitation non reçue</div>
+    <p class="rb">L'invitation vient de <strong>invites@microsoft.com</strong>. Elle expire après 30 jours.</p>
+    <ol class="rs">
+      <li>Vérifie tes dossiers <strong>Indésirables</strong>, <strong>Spam</strong> et <strong>Promotions</strong></li>
+      <li>Si introuvable après 24h, contacte-nous à <strong>MMMAgoraAdmin@moucheursmontrealmetro.ca</strong></li>
+      <li>Précise l'adresse courriel avec laquelle tu es inscrit à MMM+</li>
+      <li>On te renvoie une invitation dans les 24h</li>
+    </ol>
   </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<!-- ═══ RÉSOLUTIONS ═══ -->
-
-<div id="r1a_ok" class="step">
+<div id="r_gmail" class="step">
   <div class="res res-ok">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Normal pour la première fois — ne se répétera pas</div>
-    <p class="rb">Lors de ta première visite depuis ce navigateur, Microsoft doit valider ta session sur Viva Engage séparément de SharePoint. C'est un comportement B2B standard.</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Compte Gmail ou Videotron — connexion par code</div>
+    <p class="rb">Microsoft t'envoie un <strong>code de vérification à 8 chiffres</strong> par courriel. Aucune application à installer.</p>
     <ol class="rs">
-      <li>Entre ton code OTP ou approuve la notification Microsoft Authenticator</li>
-      <li>Coche <strong>« Ne plus me demander pendant 30 jours »</strong> si l'option est disponible</li>
-      <li>Lors de ta prochaine visite sur le même appareil, tu n'auras plus cette étape</li>
+      <li>Clique sur le lien MMM+ Agora</li>
+      <li>Entre ton adresse Gmail ou Videotron</li>
+      <li>Choisis <strong>« Envoyer un code de vérification »</strong></li>
+      <li>Ouvre ta boîte courriel — tu recevras un code à 8 chiffres</li>
+      <li>Entre le code dans la page Microsoft</li>
+      <li>Tu accèdes directement à Agora</li>
     </ol>
   </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Autre problème</button></div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1a_loop" class="step">
+<div id="r_hotmail" class="step">
+  <div class="res res-ok">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Compte Hotmail ou Outlook — connexion directe</div>
+    <p class="rb">Tu te connectes avec ton compte Microsoft habituel. Aucun nouveau mot de passe requis.</p>
+    <ol class="rs">
+      <li>Clique sur le lien MMM+ Agora</li>
+      <li>Entre ton adresse Hotmail ou Outlook</li>
+      <li>Entre ton mot de passe Microsoft habituel</li>
+      <li>Approuve la notification MFA si demandée</li>
+      <li>Tu accèdes directement à Agora</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
+</div>
+
+<div id="r_gmail_ms_proc" class="step">
   <div class="res res-w">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Boucle de session — conflit de comptes</div>
-    <p class="rb">Tu es probablement connecté simultanément à plusieurs comptes Microsoft (MMM+ + employeur + personnel). Le navigateur ne sait plus lequel choisir.</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Gmail lié à un compte Microsoft — procédure</div>
+    <p class="rb">C'est la situation la plus délicate. Suis ces étapes dans l'ordre exact.</p>
     <ol class="rs">
-      <li>Ouvre une <strong>fenêtre de navigation privée</strong> (Ctrl+Maj+N ou Cmd+Maj+N)</li>
-      <li>Accède à MMM+ Agora via le lien de ton courriel d'invitation</li>
-      <li>Connecte-toi uniquement avec le courriel de ton compte MMM+</li>
-      <li>Si ça fonctionne, bookmarke cette URL et utilise toujours la fenêtre privée pour MMM+ Agora</li>
-      <li>Si ça boucle encore, contacte le support</li>
+      <li>Ouvre une <strong>fenêtre de navigation privée</strong> (Ctrl+Maj+N)</li>
+      <li>Va sur <strong>login.microsoftonline.com</strong></li>
+      <li>Clique <strong>« Se déconnecter de tous les comptes »</strong></li>
+      <li>Entre ton adresse Gmail</li>
+      <li>Choisis <strong>« Envoyer un code de vérification »</strong> — ne choisis PAS ton compte Microsoft personnel</li>
+      <li>Entre le code reçu dans ta boîte Gmail</li>
+      <li>Utilise ensuite le lien direct vers MMM+ Agora</li>
     </ol>
   </div>
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1a_wrong" class="step">
+<div id="r_gmail_ms_travail" class="step">
+  <div class="res res-ok">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Navigateur de travail — solution permanente</div>
+    <p class="rb">Ton navigateur mémorise ton compte professionnel. La solution : utiliser un navigateur différent pour MMM+ Agora.</p>
+    <ol class="rs">
+      <li>Si tu utilises <strong>Edge</strong> au travail → utilise <strong>Firefox ou Chrome</strong> pour MMM+</li>
+      <li>Si tu utilises <strong>Chrome</strong> au travail → utilise <strong>Firefox</strong> pour MMM+</li>
+      <li>Les deux comptes ne se mélangeront jamais</li>
+      <li>Mets MMM+ Agora en favori dans ce navigateur dédié</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
+</div>
+
+<div id="r_corporatif" class="step">
   <div class="res res-w">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Mauvais espace — utilise le bon compte</div>
-    <p class="rb">Microsoft t'a connecté avec ton compte d'employeur au lieu de ton compte MMM+. C'est fréquent chez les membres avec un compte professionnel actif (CUSM, enseignants, etc.).</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Compte corporatif — navigation privée</div>
+    <p class="rb">Utilise une fenêtre privée et choisis la vérification par code plutôt que ton compte corporatif.</p>
     <ol class="rs">
-      <li>Déconnecte-toi de ton compte d'employeur dans le navigateur</li>
-      <li>Ouvre une <strong>fenêtre de navigation privée</strong></li>
-      <li>Connecte-toi avec le courriel de ton compte MMM+</li>
-      <li>Solution permanente : crée un <strong>profil de navigateur dédié</strong> pour MMM+ Agora (Chrome et Edge le permettent)</li>
+      <li>Ouvre une <strong>fenêtre de navigation privée</strong> (Ctrl+Maj+N)</li>
+      <li>Accède à MMM+ Agora via le lien direct</li>
+      <li>Entre ton adresse courriel personnelle (celle de ton profil Yapla)</li>
+      <li>Choisis <strong>« Envoyer un code de vérification »</strong></li>
+      <li>Entre le code reçu par courriel</li>
+      <li>Solution durable : utilise un navigateur différent de celui du travail</li>
     </ol>
   </div>
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1b_fdv" class="step">
-  <div class="res res-i">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Femmes de rivière — accès sur demande</div>
-    <p class="rb">Cette communauté est réservée aux femmes membres de MMM+. L'accès ne se fait pas automatiquement à l'inscription.</p>
+<div id="r_mauvais_compte" class="step">
+  <div class="res res-w">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Boucle de reconnexion — mauvais compte actif</div>
+    <p class="rb">Ton navigateur utilise le mauvais compte Microsoft. Solution rapide en navigation privée.</p>
     <ol class="rs">
-      <li>Contacte le support en précisant que tu souhaites rejoindre <strong>Femmes de rivière</strong></li>
-      <li>La gestionnaire de communauté validera ta demande</li>
-      <li>Tu recevras un avis une fois l'accès accordé</li>
+      <li>Ouvre une <strong>fenêtre de navigation privée</strong> :<br>
+        Edge/Chrome : <code>Ctrl+Maj+N</code> &nbsp;|&nbsp; Firefox : <code>Ctrl+Maj+P</code> &nbsp;|&nbsp; Safari iPhone : onglets → Privé</li>
+      <li>Copie-colle le lien MMM+ Agora dans la barre d'adresse</li>
+      <li>Clique <strong>« Utiliser un autre compte »</strong></li>
+      <li>Entre ton adresse courriel personnelle (celle de ton profil MMM+)</li>
     </ol>
   </div>
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1b_none" class="step">
+<div id="r_erreur_rouge" class="step">
   <div class="res res-d">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg> Aucune communauté visible — compte non provisionné</div>
-    <p class="rb">Ton compte a été créé mais n'a pas été ajouté aux groupes des communautés Viva Engage. C'est une étape distincte de l'invitation initiale.</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Erreur rouge — conflit de comptes</div>
+    <p class="rb">Il y a un conflit entre ton compte personnel et un autre compte Microsoft enregistré dans ton navigateur.</p>
     <ol class="rs">
-      <li>Contacte le support en indiquant ton adresse courriel MMM+</li>
-      <li>L'administrateur corrigera l'appartenance de ton compte aux 8 communautés</li>
-      <li>Une fois corrigé, actualise la page Agora (F5) — les communautés apparaîtront</li>
+      <li>Suis les étapes de navigation privée ci-dessus (même solution que « boucle de reconnexion »)</li>
+      <li>Si l'erreur persiste après navigation privée, écris à l'équipe MMM+</li>
+      <li>On règle ça de notre côté en moins de <strong>24 heures</strong></li>
     </ol>
   </div>
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1b_some" class="step">
+<div id="r_cache" class="step">
+  <div class="res res-i">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.49-3.51"/></svg> Vider le cache du navigateur</div>
+    <p class="rb">Le cache peut conserver de vieilles sessions et causer des problèmes de connexion.</p>
+    <ol class="rs">
+      <li><strong>Chrome / Edge :</strong> <code>Ctrl+Maj+Suppr</code> → Depuis toujours → Cookies + Images en cache → Effacer</li>
+      <li><strong>Firefox :</strong> <code>Ctrl+Maj+Suppr</code> → Tout → Cookies + Cache → Effacer</li>
+      <li><strong>Safari Mac :</strong> Menu Safari → Préférences → Confidentialité → Gérer les données → Tout supprimer</li>
+      <li><strong>Safari iPhone/iPad :</strong> Réglages → Safari → Effacer historique et données</li>
+      <li>Après avoir vidé le cache, reconnecte-toi via le lien direct MMM+ Agora</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
+</div>
+
+<div id="r_tuiles" class="step">
   <div class="res res-w">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Communautés partielles — rejoindre manuellement</div>
-    <p class="rb">Certaines communautés s'affichent seulement après les avoir rejointes manuellement.</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Tuiles qui ne fonctionnent pas</div>
+    <p class="rb">Ton accès à la plateforme est actif — c'est l'association de ton compte aux communautés qui est incomplète.</p>
+    <ol class="rs">
+      <li>Ferme complètement ton navigateur</li>
+      <li>Ouvre une fenêtre privée et reconnecte-toi via le lien direct</li>
+      <li>Si ça persiste, écris à <strong>MMMAgoraAdmin@moucheursmontrealmetro.ca</strong> avec ton adresse courriel</li>
+      <li>On effectue la correction manuellement — accès restauré dans les <strong>24h</strong></li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
+</div>
+
+<div id="r_comm_vide" class="step">
+  <div class="res res-d">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg> Aucune communauté visible</div>
+    <p class="rb">Ton compte n'a pas été associé aux communautés lors de l'onboarding. C'est une correction manuelle de notre côté.</p>
+    <ol class="rs">
+      <li>Écris à <strong>MMMAgoraAdmin@moucheursmontrealmetro.ca</strong></li>
+      <li>Indique l'adresse courriel avec laquelle tu te connectes</li>
+      <li>On associe ton compte aux 8 communautés dans les <strong>24h</strong></li>
+      <li>Actualise la page Agora (F5) après la correction</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
+</div>
+
+<div id="r_comm_partiel" class="step">
+  <div class="res res-w">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Communautés partiellement visibles</div>
+    <p class="rb">Certaines communautés s'affichent après les avoir rejointes manuellement.</p>
     <ol class="rs">
       <li>Dans Agora, clique sur <strong>Découvrir des communautés</strong> (icône grille en haut)</li>
-      <li>Recherche les communautés manquantes : Rivières &amp; Sorties, Saumon &amp; Grandes Rivières, Artisans de la rivière, Conditions &amp; Territoires, Carnet de pêche</li>
+      <li>Recherche : Rivières &amp; Sorties, Saumon &amp; Grandes Rivières, Artisans de la rivière, Conditions &amp; Territoires, Carnet de pêche</li>
       <li>Clique <strong>Rejoindre</strong> pour chacune</li>
       <li>Si une communauté n'apparaît pas dans la recherche, contacte le support</li>
     </ol>
@@ -326,117 +459,37 @@ body{font-family:var(--f);background:var(--w);color:var(--gt);margin:0;padding:0
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1c_pro" class="step">
-  <div class="res res-w">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> Conflit avec compte d'employeur</div>
-    <p class="rb">Microsoft t'authentifie automatiquement avec ton compte professionnel dominant (CUSM, école, etc.) au lieu de ton compte MMM+.</p>
-    <ol class="rs">
-      <li>À la page de connexion, clique sur <strong>« Utiliser un autre compte »</strong></li>
-      <li>Entre le courriel de ton compte MMM+ (celui utilisé dans Yapla)</li>
-      <li>Solution durable : crée un <strong>profil de navigateur dédié</strong> pour MMM+ Agora — Chrome et Edge permettent des profils séparés qui mémorisent le bon compte</li>
-      <li>Si ton employeur bloque les connexions B2B externe, utilise ton courriel personnel pour ton compte MMM+</li>
-    </ol>
-  </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
-</div>
-
-<div id="r1c_dual" class="step">
-  <div class="res res-d">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Double compte MMM+ — contact admin requis</div>
-    <p class="rb">Si tu as un compte instructeur interne (@moucheursmontrealmetro.ca) et un compte membre invité (Gmail, etc.), les deux coexistent et créent des conflits d'accès.</p>
-    <ol class="rs">
-      <li>Contacte le support en précisant tes deux adresses courriel</li>
-      <li>L'administrateur identifiera le compte principal et désactivera le conflit</li>
-      <li>En attendant, utilise toujours l'adresse <strong>@moucheursmontrealmetro.ca</strong> si tu es instructeur</li>
-    </ol>
-  </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
-</div>
-
-<div id="r1d_spam" class="step">
-  <div class="res res-d">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Invitation introuvable — relance nécessaire</div>
-    <p class="rb">L'invitation (expéditeur : invites@microsoft.com) est peut-être expirée ou bloquée. Les invitations expirent après 30 jours.</p>
-    <ol class="rs">
-      <li>Contacte le support en indiquant ton adresse courriel exacte</li>
-      <li>L'administrateur renverra une nouvelle invitation depuis Entra ID</li>
-      <li>Accepte-la dans les 48 h</li>
-    </ol>
-  </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
-</div>
-
-<div id="r1d_videotron" class="step">
-  <div class="res res-d">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/></svg> Fournisseur qui bloque les courriels Microsoft</div>
-    <p class="rb">Certains fournisseurs québécois (Videotron notamment) bloquent ou filtrent les courriels d'invitation Microsoft. Le message ne te parviendra jamais via cette adresse.</p>
-    <ol class="rs">
-      <li>Contacte le support en indiquant une <strong>adresse courriel alternative</strong> (Gmail, Outlook, etc.)</li>
-      <li>L'administrateur créera ton compte avec cette nouvelle adresse</li>
-      <li>Mets aussi à jour ton courriel dans ton profil Yapla pour assurer la cohérence</li>
-    </ol>
-  </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
-</div>
-
-<div id="r1d_yapla" class="step">
+<div id="r_fdv" class="step">
   <div class="res res-i">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg> Vérification du courriel dans Yapla</div>
-    <p class="rb">L'invitation est envoyée à l'adresse enregistrée dans Yapla. Si elle est incorrecte, tu ne peux pas la recevoir.</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Femmes de rivière</div>
+    <p class="rb">C'est une communauté privée réservée aux membres féminines de MMM+.</p>
     <ol class="rs">
-      <li>Connecte-toi à <strong>yapla.com</strong> avec ton adresse habituelle</li>
-      <li>Vérifie le courriel dans ton profil membre</li>
-      <li>Si incorrect, mets-le à jour puis contacte le support pour une nouvelle invitation</li>
+      <li>Clique sur la tuile <strong>Femmes de rivière</strong> dans Agora</li>
+      <li>Envoie une demande d'adhésion</li>
+      <li>La responsable de la communauté traitera ta demande</li>
+      <li>Tu recevras un avis une fois l'accès accordé</li>
     </ol>
   </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
 </div>
 
-<div id="r1e_expired" class="step">
-  <div class="res res-d">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Lien expiré — nouvelle invitation requise</div>
-    <p class="rb">Les invitations Microsoft B2B expirent après 30 jours sans être acceptées.</p>
-    <ol class="rs">
-      <li>Contacte le support avec ton adresse courriel</li>
-      <li>Précise que ton lien est expiré</li>
-      <li>L'administrateur renverra une nouvelle invitation</li>
-      <li>Accepte-la dans les 48 h</li>
-    </ol>
-  </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
-</div>
-
-<div id="r1e_account" class="step">
-  <div class="res res-d">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Compte introuvable</div>
-    <p class="rb">Discordance entre l'adresse utilisée et celle dans Yapla, ou compte pas encore provisionné.</p>
-    <ol class="rs">
-      <li>Vérifie que tu utilises le même courriel que dans ton profil Yapla</li>
-      <li>Si tu as changé d'adresse récemment, contacte le support</li>
-      <li>L'administrateur vérifiera la présence de ton compte dans le système</li>
-    </ol>
-  </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
-</div>
-
-<div id="r1e_consent" class="step">
+<div id="r_nav_comm" class="step">
   <div class="res res-ok">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Page de consentement — c'est normal</div>
-    <p class="rb">Microsoft demande ton accord pour que MMM+ accède à ton profil de base. Étape obligatoire, une seule fois.</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Navigation entre les communautés</div>
+    <p class="rb">Depuis la page d'accueil Agora, clique sur la communauté qui t'intéresse.</p>
     <ol class="rs">
-      <li>Lis les permissions (lecture de profil et appartenance aux groupes)</li>
-      <li>Clique <strong>Accepter</strong></li>
-      <li>Tu es redirigé vers MMM+ Agora automatiquement</li>
-      <li>Si tu arrives sur une page blanche, actualise (F5)</li>
+      <li>Si Microsoft te redemande de te connecter, assure-toi d'utiliser le lien direct MMM+ Agora (pas l'invitation initiale)</li>
+      <li>Si une communauté n'est pas visible, utilise <strong>Découvrir des communautés</strong> et rejoins-la</li>
+      <li>En cas de problème persistant, vide le cache et reconnecte-toi en fenêtre privée</li>
     </ol>
   </div>
-  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Ça n'a pas fonctionné</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
 </div>
 
-<div id="r1f_url" class="step">
+<div id="r_app_wrong" class="step">
   <div class="res res-w">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> URL dans le mauvais champ</div>
-    <p class="rb">Le champ demande ton <strong>adresse courriel</strong>, pas le lien du site Agora. L'app a mis en cache cette erreur — une simple correction ne suffit pas.</p>
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> URL dans le champ courriel</div>
+    <p class="rb">Le champ demande ton <strong>adresse courriel</strong>, pas le lien du site. L'app a mis en cache l'erreur.</p>
     <ol class="rs">
       <li><strong>Désinstalle</strong> complètement l'app Viva Engage</li>
       <li><strong>Redémarre</strong> ton téléphone (vide le cache)</li>
@@ -447,38 +500,116 @@ body{font-family:var(--f);background:var(--w);color:var(--gt);margin:0;padding:0
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1f_domain" class="step">
-  <div class="res res-ok">
-    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Champ organisation — voici quoi entrer</div>
-    <p class="rb">Certaines versions de l'app demandent d'abord le domaine de l'organisation avant le courriel.</p>
+<div id="r_app_error" class="step">
+  <div class="res res-w">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> « Sorry, something went wrong »</div>
+    <p class="rb">L'application ne sait pas automatiquement que tu fais partie de MMM+. Il faut lui indiquer l'organisation.</p>
     <ol class="rs">
-      <li>Entre <strong>moucheursmontrealmetro</strong> (sans .ca ni https://)</li>
-      <li>Appuie sur <strong>Next</strong></li>
-      <li>Entre ensuite ton adresse courriel MMM+</li>
-      <li>Connecte-toi et approuve le MFA si demandé</li>
+      <li>Ouvre l'app Viva Engage</li>
+      <li>Sur l'écran de connexion, <strong>ne clique pas</strong> sur le bouton « Sign in »</li>
+      <li>Clique sur <strong>« Sign in to an organization »</strong> (lien bleu en bas)</li>
+      <li>Entre cette adresse : <code>moucheursmontrealmetro.ca</code></li>
+      <li>Appuie sur <strong>Continuer</strong></li>
+      <li>Entre ton adresse courriel personnelle et connecte-toi</li>
     </ol>
   </div>
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div id="r1f_blank" class="step">
+<div id="r_app_blank" class="step">
   <div class="res res-d">
     <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> App bloquée — réinstallation complète</div>
-    <p class="rb">Un bug de cache empêche l'app de charger l'écran de connexion correctement.</p>
+    <p class="rb">Un bug de cache empêche l'app de charger correctement.</p>
     <ol class="rs">
       <li>Désinstalle l'app <strong>Viva Engage</strong></li>
       <li>Redémarre ton téléphone</li>
       <li>Réinstalle depuis l'App Store ou Google Play</li>
       <li>Entre uniquement ton <strong>adresse courriel</strong> à la première ouverture</li>
-      <li>Alternative : utilise Safari ou Chrome mobile avec le lien de ton invitation</li>
+      <li>Alternative : utilise <strong>Safari ou Chrome mobile</strong> avec le lien direct MMM+ Agora</li>
     </ol>
   </div>
   <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
 </div>
 
-<div class="foot">
-  Problème non résolu ? <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank">Soumettre une demande au support MMM+</a>
+<div id="r_mobile_nav" class="step">
+  <div class="res res-ok">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Agora sur mobile sans l'app</div>
+    <p class="rb">Oui — Agora est accessible depuis le navigateur de ton téléphone. Aucune application requise.</p>
+    <ol class="rs">
+      <li>Ouvre <strong>Safari</strong> (iPhone) ou <strong>Chrome</strong> (Android)</li>
+      <li>Va sur le lien direct MMM+ Agora</li>
+      <li>Connecte-toi avec ton adresse courriel habituelle</li>
+      <li>Mets la page en favori pour y accéder rapidement</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
 </div>
+
+<div id="r_adhesion" class="step">
+  <div class="res res-ok">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accès inclus dans l'adhésion MMM+</div>
+    <p class="rb">Oui — MMM+ Agora est réservé aux membres actifs. Ton accès est automatiquement activé lors de ton adhésion et révoqué si elle n'est pas renouvelée.</p>
+    <ol class="rs">
+      <li>Si tu es membre actif et n'as pas accès, vérifie ton statut dans <strong>Yapla</strong></li>
+      <li>Si ton statut est « Actif » mais l'accès est bloqué, contacte le support</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
+</div>
+
+<div id="r_evenements" class="step">
+  <div class="res res-ok">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Événements en direct</div>
+    <p class="rb">Les annonces sont publiées dans deux communautés dédiées.</p>
+    <ol class="rs">
+      <li>Suis la communauté <strong>MMM+ | Au courant</strong> pour les annonces</li>
+      <li>Suis la communauté <strong>MMM+ | En direct</strong> pour les diffusions live</li>
+      <li>Active les notifications de ces communautés pour ne rien manquer</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
+</div>
+
+<div id="r_replay" class="step">
+  <div class="res res-ok">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Revoir un événement manqué</div>
+    <p class="rb">Oui — les enregistrements seront disponibles dans la <strong>Médiathèque</strong> dès l'automne 2026.</p>
+    <ol class="rs">
+      <li>En attendant l'ouverture de la Médiathèque, les enregistrements peuvent être partagés directement dans la communauté <strong>MMM+ | En direct</strong></li>
+      <li>Consulte cette communauté après chaque événement</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
+</div>
+
+<div id="r_suggestion" class="step">
+  <div class="res res-i">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Suggérer une nouvelle communauté</div>
+    <p class="rb">On est toujours ouverts aux bonnes idées !</p>
+    <ol class="rs">
+      <li>Écris à <strong>MMMAgoraAdmin@moucheursmontrealmetro.ca</strong></li>
+      <li>Décris ta suggestion et pourquoi elle serait utile aux membres</li>
+      <li>On évalue et on revient vers toi</li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button></div>
+</div>
+
+<div id="r_autre" class="step">
+  <div class="res res-i">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Problème non couvert</div>
+    <p class="rb">Pas de panique — ton accès est là, on va le retrouver ensemble.</p>
+    <ol class="rs">
+      <li>Complète le formulaire de support ci-dessous</li>
+      <li>Ou écris directement à <strong>MMMAgoraAdmin@moucheursmontrealmetro.ca</strong></li>
+      <li>Joins une capture d'écran du message d'erreur si possible</li>
+      <li>On te répond dans les <strong>24 heures</strong></li>
+    </ol>
+  </div>
+  <div class="acts"><button class="btn" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg> Recommencer</button><a class="btn btn-p" href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Contacter le support →</a></div>
+</div>
+
+<div class="foot">Problème non résolu ? <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=zzQxdvLwrEyhN8sjSPcVoaW01piQtLtDgX3FtosdtANUMVFSOTIxT1VLTDdVSlAzOUU0TUw4MlY3SC4u&route=shorturl" target="_blank">Soumettre une demande au support MMM+</a></div>
 
 </div>
 <script>
@@ -508,8 +639,6 @@ function upbc(){
 function upprog(){
   const pct=Math.min(100,Math.round((H.length/3)*100));
   document.getElementById('pf').style.width=pct+'%';
-  document.getElementById('plbl').textContent=pct>=100?'Solution trouvée':`Étape ${H.length+1} sur 3`;
-  document.getElementById('ppct').textContent=pct+' %';
 }
 </script>
 </body>
