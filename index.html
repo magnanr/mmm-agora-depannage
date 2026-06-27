@@ -347,13 +347,13 @@ async function sendChat(){
   chatHistory.push({role:'user',content:val});
 
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('https://mmm-chat-proxy.roch-magnan.workers.dev',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-        'x-api-key':API_KEY,
+        
         'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
+        
       },
       body:JSON.stringify({
         model:'claude-haiku-4-5',
